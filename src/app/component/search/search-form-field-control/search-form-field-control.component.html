@@ -1,0 +1,9 @@
+<ng-container [formGroup]="form">
+  <mat-select formControlName="scope" [class.disabled]="disabled" value="" class="select">
+    <mat-option [value]="''">All</mat-option>
+    <mat-option [value]="'pl'">Poland</mat-option>
+    <mat-option [value]="'en'">England</mat-option>
+  </mat-select>
+  <mat-divider [vertical]="true" class="divider"></mat-divider>
+  <input matInput formControlName="query" [class.disabled]="disabled" [placeholder]="placeholder" type="text" name="search" class="input">
+</ng-container>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {FormControl, FormGroup} from "@angular/forms";
+import {Search} from "./component";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'custom-controls';
+  readonly form = new FormGroup<{search: FormControl<Search>}>({
+    search: new FormControl<{scope: string, query: string}>({scope: '', query: null}, SearchValidator)
+  });
+}
+
+function SearchValidator(control: FormControl) {
+  return control.value.scope !== null && !!control.value.query ? null : {validateSearch: {invalid: true}};
 }
